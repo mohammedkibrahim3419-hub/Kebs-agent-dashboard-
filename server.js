@@ -165,7 +165,12 @@ footer a{color:var(--gold);text-decoration:none;}
       <div class="caps">${capsHtml}</div>
     </div>
   </div>
-  <div class="timestamp">Last fetched: ${new Date().toLocaleString()}</div>
+  
+  <div style='text-align:center;margin-top:24px'>
+    <button onclick='location.reload()' style='background:transparent;border:1px solid #1a2a38;border-radius:10px;padding:10px 24px;color:#4a6a80;font-family:Share Tech Mono,monospace;font-size:12px;cursor:pointer;transition:all 0.2s' onmouseover='this.style.borderColor="#f5c542";this.style.color="#f5c542"' onmouseout='this.style.borderColor="#1a2a38";this.style.color="#4a6a80"'>
+      ↺ Refresh Data
+    </button>
+  </div><div class="timestamp">Last fetched: ${new Date().toLocaleString()}</div>
   <footer>
     Built on <a href="https://arc.network" target="_blank">Arc Testnet</a> &nbsp;·&nbsp;
     ERC-8004 &nbsp;·&nbsp;
