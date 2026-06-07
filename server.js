@@ -185,3 +185,20 @@ footer a{color:var(--gold);text-decoration:none;}
 });
 
 app.listen(PORT, () => console.log("Kebs Dashboard running on port", PORT));
+
+// Unified Balance endpoint for CreatorPay
+const { UnifiedBalanceKit } = require('@circle-fin/unified-balance-kit');
+const ubKit = new UnifiedBalanceKit({
+  apiKey: 'TEST_API_KEY:f0077764175eed2e145ac95948acbd1a:c2e81f4edd73eba352f879fad526d515',
+});
+
+app.get('/api/unified-balance', async (req, res) => {
+  try {
+    const { address } = req.query;
+    if (!address) return res.status(400).json({ error: 'Address required' });
+    const balance = await ubKit.getBalance({ address });
+    res.json({ success: true, balance });
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+});
